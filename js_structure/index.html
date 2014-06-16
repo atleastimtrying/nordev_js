@@ -1,0 +1,86 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>JS Structuring</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src='javascripts/jquery.js'></script>
+    <script src="javascripts/app.js"></script>
+  </head>
+  <body>
+    <section class='active'>
+      <h2>JS Structure</h2>
+      <ul>
+        <li>
+          A series of simple refactors showing how I tidy up legacy code.
+        </li>
+        <li>These are in no particular order</li>
+        <li>They are a personal approach, I'm always trying to improve these.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>0: .js files</h2>
+      <ul>
+        <li>tidies up your html</li>
+        <li>no more digging through templates</li>
+        <li>gives you clear structure</li>
+        <li>use multiple files and join them together (grunt et al)</li>
+        <li>helps you think abour load order and dependencies</li>
+      </ul>
+    </section>
+    <section>
+      <h2>1: Namespacing</h2>
+      <ul>
+        <li>namespacing prevents libarary clashes</li>
+        <li>it's a simple step that can tidy your entire codebase</li>
+        <li>it makes your code distict from libraries</li>
+        <li>use closures to seperate your code.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>2: Singletons</h2>
+      <ul>
+        <li>in js the singleton pattern can be a simple object literal</li>
+        <li>it helps re enforce your namespacing and group similar functions together</li>
+        <li>it can give you an idea as to the kinds of structures you want to expose to your user</li>
+      </ul>
+    </section>
+    <section>
+      <h2>3: pseudo class structures</h2>
+      <ul>
+        <li>you can emulate classes in js</li>
+        <li>use classes for objects with specific behavior</li>
+        <li>dealing with collections is neater with an array of instances</li>
+      </ul>
+    </section>
+    <section>
+      <h2>4: discrete functions</h2>
+      <ul>
+        <li>not all functions need to be public</li>
+        <li>only expose the functions needed outside of the context</li>
+        <li>using var inside a closure keeps functions discrete</li>
+        <li>using this. inside an instance exposes functions explicitly</li>
+      </ul>
+    </section>
+    <section>
+      <h2>5: good naming</h2>
+      <ul>
+        <li>all names should be clear</li>
+        <li>use js idioms or don't. You know your audience</li>
+        <li>careful using capitals at the start as they imply a class.</li>
+        <li>use a sensible consistent glossary</li>
+        <li>never have a function name describing two actions</li>
+      </ul>
+    </section>
+    <section>
+      <h2>6: loads of tiny functions</h2>
+      <ul>
+        <li>javascript gives us anonymous functions</li>
+        <li>use them at your peril</li>
+        <li>small named functions with one purpose are testable</li>
+        <li>they are also more legible</li>
+        <li>combine time sensitive functions into procedural groups</li>
+        <li>write more functions</li>
+      </ul>
+    </section>
+  </body>
+</html>

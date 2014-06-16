@@ -1,0 +1,11 @@
+{
+  "name": "WebGl Test",
+  "description": "Playing with webgl using threejs",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "Anders Fisher",
+    "url": "http://andersfisher.com"
+  },
+  "fullscreen": "true",
+  "default_locale": "en"
+}

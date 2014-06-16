@@ -1,0 +1,124 @@
+key tenets of js reformatting:
+
+namespacing
+
+Namespacing is very important in js, it gives our code a home. more importantly it helps to prevent your variables from being rewritten reset or overwriting others.
+say you have a function that modifies x, which os the left right position of your character. You are using a library (written by someone else) that allows you to reposition the viewport very easily, and they store its position in the variable x.
+you increment x and your viewport moves too, a bug! simply enough solved, call it playerX and cameraX. you now adapt your game to have two players… the same bug arises.
+namespacing makes use of the singleton pattern ( that a bit of code exists once and only in one place with some order) to keep things tidy.
+
+camera_library.camera.position.x
+player_controls.player1.x
+
+or better yet
+player_controls.players[0].x
+
+
+
+grouped methods into singletons (object literals)
+
+so how do we decide how to build these namespaces or collections of objects. look for patterns that make sense to you, (assuming you have domain knowledge) put all the widgets into one object and all the fidgets into another.
+
+
+instantiate a 'class structure' where needed
+
+A better way of writing our player example would be with creating player objects which each look after their own variables.
+
+limit behavior of methods to one case
+
+what does this function do? 
+
+var animate = function(player, movement, colours, health){
+	if(movement.left){
+		player.x -= 1;
+	}
+	if(movement.right){
+		player.x += 1;
+	}
+	if(!movement.left && !movement.right){
+		player.colour = colours.still;
+	}
+	if(player.hurt){
+		health -= 1;
+	}
+};
+
+quite a bit, the function name doesn’t really explain whats happening, what should we call it? ‘movementColourHealthUpdate’ ? how about ‘stuff’?
+
+so animate is a pretty vague sort of term, you probably just mean that this thing happens in a loop (request animation frame etc). what if we broke it down into smaller functions?
+
+var updateHealth = function(player, health){
+	if(player.hurt){
+		health -= 1;
+	}
+};
+
+var updateColours = function(player, movement, colours){
+	if(!movement.left && !movement.right){
+		player.colour = colours.still;
+	}
+};
+
+var updateMovement = function(player, movement){
+	if(movement.left){
+		player.x -= 1;
+	}
+	if(movement.right){
+		player.x += 1;
+	}
+};
+
+var animate = function(){
+	updateMovement(player, movement);
+	updateColours(player, movement, colours);
+	updateHealth(player, health);
+};
+
+Update is starting to look like a more sensible name for this function.
+
+Something else is looking odd too, player is getting passed in all the time.
+we have a player class, we can assume that player is an instance of this class, perhaps when we animate all we want to do is this >
+var animate = function(){
+	player.update(movement, health, colours);
+};
+
+discrete methods.
+
+now that we have our external update method we can treat our updateColour updateMovement and updateHealth methods as being discrete, or inaccessible to anyone outside.
+
+(show structure using var instead of this)
+
+try to think about interfaces with outside world
+
+this now means that the only way you can move the player is with the update function. pretty neat, is there a case of when you need to structure things differently?
+
+lets say our game is getting more and more complicated, it’s 3d, people shoot at each other, all kinds of crazy stuff. lets say we have a collision function like so.
+
+andersco.game.collision = function(bullet.x,bullet.y,bullet.z,player.x,player.x,player.z){
+
+  //maths here
+  // test for collision, return true or false
+}
+
+lets say your fellow developer (the guy next to you) needs to make a quick mod to your game, he might be able to read your code pretty neatly, this collision example is relatively simple. lets say you have a dozen parameters, some are optional some need to default to something if not available, you can end up with situations like this. >
+
+someHorridFunction(0,1,0,false, null, null, null, ‘green’, function(result){
+	console.log(‘I really hope this is ‘ + result); 
+});
+
+This is where we start to think about interfaces, query and other library fans will recognise the use of a small about of json objects to describe your code.
+
+someHorridFunction({
+	optional_parameter1: 0,
+	layout1: 1
+});
+
+consistent naming
+
+Spot the odd one out, explain consistency, writing idiomatic code. bear in mind your audience, camel case must ALWAYS start with a lower letter to give classes their distinction.
+
+lots of files, use concatentation via grunt/asset pipeline/ require js
+
+If you have something fiddly and you aren’t sure whats coming out, manual bug testing might seem faster in the first instance but it’s no use further down the line when that fiddly bit is just as fiddly. so write some tests. don’t test everything, don’t test other people’s code. I tend to steer clear of dom manipulation stuff, i normally test maths/logic based stuff.
+
+There is more to be said here about: use of events, significance of an API, code duplication etc etc.
