@@ -11,11 +11,11 @@ describe("Singleton", function() {
     expect(nordev.exclamations.speak).toBeDefined();
   });
   
-  it("should have a method called speak with an optional subject", function() {
+  it("should have a method called speak with an optional subject that is returned in a string", function() {
     expect(nordev.exclamations.speak('jim')).toMatch(/jim/);
   });
   
-  it("should have a method called insult with the word fool", function() {
+  it("should have a method called insult which should return a string with the word fool in it.", function() {
     expect(nordev.exclamations.insult()).toMatch(/fool/);
   });
 });

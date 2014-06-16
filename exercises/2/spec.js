@@ -3,19 +3,32 @@ describe("Car", function() {
     expect(nordev.Car).toBeDefined();
   });
   
-  it("should contain a constant called volume", function() {
-    expect(nordev.exclamations.volume).toBeDefined();
+  it("should have an instance with a drive method", function() {
+    var car = new nordev.Car();
+    expect(car.drive).toBeDefined();
   });
   
-  it("should contain a method called speak", function() {
-    expect(nordev.exclamations.speak).toBeDefined();
+  it("should have an instance with a journeys method", function() {
+    var car = new nordev.Car();
+    expect(car.journeys).toBeDefined();
   });
   
-  it("should have a method called speak with an optional subject", function() {
-    expect(nordev.exclamations.speak('jim')).toMatch(/jim/);
+  it("should have a journeys method that returns 0 at the start", function() {
+    var car = new nordev.Car();
+    expect(car.journeys()).toEqual(0);
   });
   
-  it("should have a method called insult with the word fool", function() {
-    expect(nordev.exclamations.insult()).toMatch(/fool/);
+  it("should have a drive method that increments journeys", function() {
+    var car = new nordev.Car();
+    car.drive();
+    expect(car.journeys()).toEqual(1);
   });
+
+  it("should have a drive method that increments journeys twice", function() {
+    var car = new nordev.Car();
+    car.drive();
+    car.drive();
+    expect(car.journeys()).toEqual(2);
+  });
+
 });

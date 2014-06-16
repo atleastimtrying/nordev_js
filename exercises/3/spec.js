@@ -1,21 +1,17 @@
-describe("Singleton", function() {
-  it("should be defined as nordev.exclamations", function() {
-    expect(nordev.exclamations).toBeDefined();
+describe("weekdays array", function() {
+  it('should be bound to nordev.weekdays', function(){
+    expect(nordev.weekdays).toBeDefined();
   });
-  
-  it("should contain a constant called volume", function() {
-    expect(nordev.exclamations.volume).toBeDefined();
+
+  it('should have a length of 7', function(){
+    expect(nordev.weekdays.length).toEqual(7);
   });
-  
-  it("should contain a method called speak", function() {
-    expect(nordev.exclamations.speak).toBeDefined();
-  });
-  
-  it("should have a method called speak with an optional subject", function() {
-    expect(nordev.exclamations.speak('jim')).toMatch(/jim/);
-  });
-  
-  it("should have a method called insult with the word fool", function() {
-    expect(nordev.exclamations.insult()).toMatch(/fool/);
+
+  it('should contain 7 instances of WeekDays', function(){
+    result = "";
+    nordev.weekdays.forEach(function(weekday){
+      result += weekday.lowerCaseName();
+    });
+    expect(result).toEqual("mondaytuesdaywednesdaythursdayfridaysaturdaysunday");
   });
 });

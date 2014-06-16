@@ -1,21 +1,23 @@
-describe("Singleton", function() {
-  it("should be defined as nordev.exclamations", function() {
-    expect(nordev.exclamations).toBeDefined();
+describe("Events triggering", function() {
+  it("should call window.aflog() on the init event on namespace", function() {
+    window.aflog = function(){
+      expect(false).toBeFalsy();
+    };
+    $(namespace).trigger('init');
   });
-  
-  it("should contain a constant called volume", function() {
-    expect(nordev.exclamations.volume).toBeDefined();
+
+  it("should pass the array bound to the sum event to the window.sum method", function() {
+    var original = [12, 23, 34, 45];
+    window.sum = function(result){
+      expect(result).toEqual(original);
+    };
+    $(namespace).trigger('sum', original);
   });
-  
-  it("should contain a method called speak", function() {
-    expect(nordev.exclamations.speak).toBeDefined();
-  });
-  
-  it("should have a method called speak with an optional subject", function() {
-    expect(nordev.exclamations.speak('jim')).toMatch(/jim/);
-  });
-  
-  it("should have a method called insult with the word fool", function() {
-    expect(nordev.exclamations.insult()).toMatch(/fool/);
+
+  it("should trigger an event called Hi after an event called Hello", function(){
+    $(namespace).on("Hi", function(){
+      expect(true).toBeTruthy();
+    });
+    $(namespace).trigger("hello");
   });
 });

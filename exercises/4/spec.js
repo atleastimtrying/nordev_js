@@ -1,21 +1,13 @@
-describe("Singleton", function() {
-  it("should be defined as nordev.exclamations", function() {
-    expect(nordev.exclamations).toBeDefined();
+describe("Events: Listening", function() {
+  it("should trigger a start event on namespace when namespace.start() is called", function() {
+    $(namespace).on('start', function(){
+      expect(true).toBeTruthy();
+    });
   });
-  
-  it("should contain a constant called volume", function() {
-    expect(nordev.exclamations.volume).toBeDefined();
-  });
-  
-  it("should contain a method called speak", function() {
-    expect(nordev.exclamations.speak).toBeDefined();
-  });
-  
-  it("should have a method called speak with an optional subject", function() {
-    expect(nordev.exclamations.speak('jim')).toMatch(/jim/);
-  });
-  
-  it("should have a method called insult with the word fool", function() {
-    expect(nordev.exclamations.insult()).toMatch(/fool/);
+
+  it('should pass false to the boole event on namespace', function(){
+    $(namespace).on('boole', function(event, result){
+      expect(result).toEqual(false);
+    });
   });
 });
