@@ -10,4 +10,14 @@ describe("Events: Listening", function() {
       expect(result).toEqual(false);
     });
   });
+
+  it('should pass an object with a colour of green, a count of 10', function(){
+    var expected = {
+      colour: 'green',
+      count: 10
+    };
+    $(namespace).on('object', function(event, object){
+      expect(object).toEqual(expected);
+    });
+  });
 });
