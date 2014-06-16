@@ -1,0 +1,100 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>NorDev An Introduction to client side Javascript</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src='javascripts/jquery.js'></script>
+    <script src="javascripts/app.js"></script>
+  </head>
+  <body>
+    <section class='active'>
+      <h2>Welcome</h2>
+      <ul>
+        <li>
+          We will be learning some sensible ways to structure Javascript.
+        </li>
+        <li>This course Assumes some programming/ Javascript experience.</li>
+        <li>These are design patterns I use regularly in my work and have found them useful</li>
+        <li>Other methods exist, please learn them find one that fits your problem best!</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Structure of this afternoon</h2>
+      <ul>
+        <li>A talk (this one)</li>
+        <li>Some live coding (eek!)</li>
+        <li>Some exercises to go though</li>
+        <li>A Q and A session</li>
+        <li>Please ask questions throughout!</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Concepts we will be covering:</h2>
+      <ul>
+        <li>namespacing</li>
+        <li>encapsulation</li>
+        <li>singletons</li>
+        <li>pseudo classes</li>
+        <li>events</li>
+      </ul>
+    </section>
+    <section>
+      <h2>1: Namespacing</h2>
+      <ul>
+        <li>namespacing prevents libarary clashes</li>
+        <li>it's a simple step that can tidy your entire codebase</li>
+        <li>it makes your code distict from libraries</li>
+        <li>It can make your code more expressive</li>
+        <li>e.g. window.college.teachers.oldest(); </li>
+      </ul>
+    </section>
+    <section>
+      <h2>2: Encapsulation</h2>
+      <ul>
+        <li>Javascript methods are public by default</li>
+        <li>To make a method private contain it within a scope</li>
+        <li>methods in a higher scope can be over written</li>
+        <li>Don't forget the var keyword</li>
+        <li>use closures to seperate your code.</li>
+        <li>one closure per file encourages better structure via window.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>3: Singletons</h2>
+      <ul>
+        <li>in js the singleton pattern can be a simple object literal</li>
+        <li>it helps re enforce your namespacing and group similar functions together</li>
+        <li>it can give you an idea as to the kinds of structures you want to expose to your user</li>
+        <li>A good use of a singleton is for utility functions</li>
+      </ul>
+    </section>
+    <section>
+      <h2>4: pseudo class structures</h2>
+      <ul>
+        <li>you can emulate classes in js</li>
+        <li>use classes for objects with specific behavior</li>
+        <li>dealing with collections is neater with an array of instances</li>
+        <li>an instance can contain refereces to specific bits of the DOM</li>
+      </ul>
+    </section>
+    <section>
+      <h2>5: events</h2>
+      <ul>
+        <li>sometimes referred to as the observer pattern or publish subscribe.</li>
+        <li>It's a pattern built into the browser and drives a great deal of JS behavior</li>
+        <li>it allows for decoupling and discrete bits of code</li>
+        <li>I use jquery's on and trigger methods</li>
+        <li>Events allow for very flexbile designs in your programming</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Now for some live coding!</h2>
+      <ul>
+        <li>I'll be using the principles above to creat a client side timer app</li>
+        <li>feel free to code along with the incomple_timelord folder</li>
+        <li>I've already written the html and CSS for this feel free to review afterwards</li>
+        <li></li>
+      </ul>
+    </section>
+  </body>
+</html>
