@@ -12,7 +12,6 @@
     }
 
     App.prototype.keyPress = function(event) {
-      console.log(event.keyCode);
       if (event.keyCode === 32) {
         return this.nextSlide();
       } else {

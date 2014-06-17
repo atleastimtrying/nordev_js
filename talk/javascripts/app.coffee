@@ -4,7 +4,6 @@ App = class App
     $('section:first-child').show().addClass 'active'
 
   keyPress : (event)=>
-    console.log event.keyCode
     if event.keyCode is 32
       @nextSlide()
     else 
